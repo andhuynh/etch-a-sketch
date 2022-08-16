@@ -1,5 +1,10 @@
-.container{
+#container{
     display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    gap: 10px;
+    width: 960px;
+    height: 960px;
 }
 
 .box{
