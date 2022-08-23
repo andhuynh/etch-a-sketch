@@ -1,20 +1,35 @@
-// Cinstants
-let side = 16;
+// Functions
+// Deletes grid
+function deleteGrid(){
+    while(container.firstChild){
+        container.removeChild(container.lastChild);
+    }
+}
 
 // Create grid
 const container = document.querySelector("#container");
-for (let i = 0; i < side * side; i++) {
-    const box = document.createElement('div');
-    box.classList.add('box');
-    box.addEventListener('mouseover', function(event){
-        event.target.style.backgroundColor = 'black';
-    });
-    container.appendChild(box);
+function createGrid(size){
+    for (let i = 0; i < size * size; i++) {
+        const box = document.createElement('div');
+        box.classList.add('box');
+        box.addEventListener('mouseover', function(event){
+            event.target.style.backgroundColor = 'black';
+        });
+        container.appendChild(box);
+    }
 }
-
 // Resize button
 // Changes size of grid
 const resize = document.querySelector("#resize");
+resize.addEventListener('click', function(){
+    deleteGrid();
+    let size = prompt('How many sqaures per side? (Max 100)');
+    if(size < 0 || size > 100 || isNaN(size)){
+        window.alert('Invalid number. Click resize button to try again.');
+        return;
+    }
+    createGrid(size);
+});
 
 // Clear button
 // Changes all cells to white
@@ -26,10 +41,7 @@ clear.addEventListener('click', function(){
     }
 });
 
-function clear(){
-    let cell = container.children;
-    for (let i = 0; i < 256; i++){
-        cell[i].style.backgroundColor = 'white';
-    }
-}
+createGrid(16);
+
+
 
