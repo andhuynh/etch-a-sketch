@@ -28,6 +28,7 @@ resize.addEventListener('click', function(){
         window.alert('Invalid number. Click resize button to try again.');
         return;
     }
+    grid.setAttribute('style', `grid-template-columns: repeat(${size}, 1fr); grid-template-rows: repeat(${size}, 1fr);`);
     createGrid(size);
 });
 
